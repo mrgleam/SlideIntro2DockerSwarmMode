@@ -1,0 +1,10 @@
+.reveal .reveal_section {
+    position: relative;
+    height:100%;
+    width:100%;
+}
+.reveal .reveal_section .caption {
+    position: absolute;
+    bottom: 10px;
+    left: 0px;
+}

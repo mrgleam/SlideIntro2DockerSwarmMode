@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Docker Swarm Mode Walkthrough</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<link rel="stylesheet" href="css/fullscreen-img.css">
+		<link rel="stylesheet" href="css/caption.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section data-markdown>
+					<script type="text/template">
+						### Docker Swarm Mode Walkthrough
+
+						RUNNING A SWARM IN DOCKER 1.12
+					</script>
+				</section>
+				<section>
+					<p><img alt="mrgleam" src="https://avatars.githubusercontent.com/u/11692854?v=3" style="float: right; width: 200px;" /></p>
+					<h3>Santi Lertsumran</h3>
+
+					<p>Engineer | Gopher | Duck | Love My Cats</p>
+
+					<a href="https://github.com/mrgleam" target="_blank">Github:Mrgleam</a>
+				</section>
+				<section>
+					<h1>What is Swarm?</h1>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whatisswarm.png" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/linux.rafa/docker-112-swarm-mode" target="_blank">Refer : http://www.slideshare.net/linux.rafa/docker-112-swarm-mode</a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/swam-mode-relief-1024x560.png" fullscreen-size="contain">
+					<small class="caption"><a href="https://www.infoq.com/news/2016/06/dockercon-docker-swarm" target="_blank"><font color="black">Refer : https://www.infoq.com/news/2016/06/dockercon-docker-swarm</font></a></small>
+				</section>
+				<section data-markdown>
+					## 29 July 2016
+				</section>
+				<section>
+					<img src="images/docker112release.png">
+				</section>
+				<section class="reveal_section" fullscreen-img="images/happyinfraandsysadmin.png" fullscreen-size="contain">
+					<small class="caption"><a href="https://blog.docker.com/2016/07/happy-infrastructure-engineers-system-administrator-appreciation-day/" target="_blank">Refer : https://blog.docker.com/2016/07/happy-infrastructure-engineers-system-administrator-appreciation-day/</a></small>
+				</section>
+				<section>
+					<h3>SysAdmin Day Song (Karaoke)</h3>
+					<iframe width="560" height="315" src="https://www.youtube.com/embed/nRAuDdOfGIg" frameborder="0" allowfullscreen></iframe>
+				</section>
+				<section data-markdown>
+					## Swarm Mode is optional
+				</section>
+				<section data-markdown>
+					## Open ports between the hosts
+					- TCP port 2377 for cluster management communications
+					- TCP and UDP port 7946 for communication among nodes
+					- TCP and UDP port 4789 for overlay network traffic
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-2-1024.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-3-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-4-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-5-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-6-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-8-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-9-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-10-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-11-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-12-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-13-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-14-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-15-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-16-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section data-markdown>
+					# Rolling update
+				</section>
+				<section data-markdown>
+					```
+					$ docker service create --replicas 3 --name redis --update-delay 10s redis:3.0.6
+					```
+
+					By default the scheduler updates 1 task at a time.
+
+					You can pass the ```--update-parallelism``` flag to configure the maximum number of service tasks that the scheduler updates simultaneously.
+				</section>
+				<section data-markdown>
+					By default, when an update to an individual task returns a state of RUNNING, the scheduler schedules another task to update until all tasks are updated. If, at any time during an update a task returns FAILED, the scheduler pauses the update.
+
+					You can control the behavior using the `--update-failure-action` flag for `docker service create` or `docker service update`.
+				</section>
+				<section data-markdown>
+					```
+					$ docker service inspect --pretty redis
+
+					ID:             0u6a4s31ybk7yw2wyvtikmu50
+Name:           redis
+Mode:           Replicated
+ Replicas:      3
+Placement:
+ Strategy:      Spread
+UpdateConfig:
+ Parallelism:   1
+ Delay:         10s
+ContainerSpec:
+ Image:         redis:3.0.6
+Resources:
+					```
+				</section>
+				<section data-markdown>
+					```
+					$ docker service update --image redis:3.0.7 redis
+					redis
+					```
+
+					```
+					$ docker service inspect --pretty redis
+
+ID:             0u6a4s31ybk7yw2wyvtikmu50
+Name:           redis
+Mode:           Replicated
+ Replicas:      3
+Placement:
+ Strategy:      Spread
+UpdateConfig:
+ Parallelism:   1
+ Delay:         10s
+ContainerSpec:
+ Image:         redis:3.0.7
+Resources:
+					```
+				</section>
+				<section data-markdown>
+					```
+					$ docker service inspect --pretty redis
+
+ID:             0u6a4s31ybk7yw2wyvtikmu50
+Name:           redis
+...snip...
+Update status:
+ State:      paused
+ Started:    11 seconds ago
+ Message:    update paused due to failure or early termination of task 9p7ith557h8ndf0ui9s0q951b
+...snip...
+					```
+
+					To restart a paused update run docker service update <SERVICE-ID>. For example:
+
+					```
+					docker service update redis
+					```
+				</section>
+				<section data-markdown>
+					# Orchestration Deep Dive
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-31-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-32-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-33-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-34-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-35-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-36-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-37-638.jpg" fullscreen-size="contain">
+					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
+				</section>
+				<section>
+					<h1>Q&A</h1>
+				</section>
+				<section>
+					<h1>THE END</h1>
+					<h3>Thank you very much</h3>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+				width: "100%",
+				height:"100%",
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'lib/js/fullscreen-img.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
