@@ -73,6 +73,26 @@
 					- TCP and UDP port 7946 for communication among nodes
 					- TCP and UDP port 4789 for overlay network traffic
 				</section>
+				<section data-markdown>
+					#### Environment Setup
+					```
+					$ docker-machine create -d virtualbox --virtualbox-memory 512 swarm01
+					$ docker-machine create -d virtualbox --virtualbox-memory 512 swarm02
+					$ docker-machine create -d virtualbox --virtualbox-memory 512 swarm03
+					$ docker-machine create -d virtualbox --virtualbox-memory 512 \
+					--engine-label com.example.storage="ssd" swarm04
+					```
+
+					#### Change to docker environment terminal (OS X, Linux)
+					```
+					$ eval $(docker-machine env swarm01)
+					```
+
+					#### Example docker image
+					```
+					$ docker pull francois/apache-hostname
+					```
+				</section>
 				<section class="reveal_section" fullscreen-img="images/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi-2-1024.jpg" fullscreen-size="contain">
 					<small class="caption"><a href="http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi" target="_blank"><font color="black">Refer : http://www.slideshare.net/Docker/whats-new-in-docker-112-by-mike-goelzer-and-andrea-luzzardi</font></a></small>
 				</section>
